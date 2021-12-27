@@ -1,4 +1,4 @@
-Lab: Blind SQL injection with out-of-band data exfiltration
+# Lab: Blind SQL injection with out-of-band data exfiltration
 
 My burp collaborator subdomain: `lyn9rdpqvjp92kzn7ixitap9e0kq8f.burpcollaborator.net`
 

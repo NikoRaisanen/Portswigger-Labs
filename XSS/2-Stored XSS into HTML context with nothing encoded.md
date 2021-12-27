@@ -1,6 +1,6 @@
 # Lab: Stored XSS into HTML context with nothing encoded
 
-To solve this lab, submit a comment that calls the alert function when the blog post is viewed. 
+>To solve this lab, submit a comment that calls the alert function when the blog post is viewed. 
 
 Vulnerable area: comments section
 

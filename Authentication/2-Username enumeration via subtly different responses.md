@@ -5,7 +5,7 @@
     Candidate usernames
     Candidate passwords
 
-To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page. 
+>To solve the lab, enumerate a valid username, brute-force this user's password, then access their account page. 
 
 Entered some test data into the username and password fields, they are displayed here in the request:
 
