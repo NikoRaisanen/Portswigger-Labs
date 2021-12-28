@@ -24,7 +24,7 @@ We need to successfully log in as `wiener` after every 2 login attempts to avoid
 where each `<>` represents a POST request to the login page
 
 ### The Attack
-At the time of writing, I am not aware of how to automatically execute the above attack with Burp. So I created a python script to add `peter` to the password list after every 2 requests. I then created another list for usernames, so that it maps onto the password list -- See `4-script.py`, `newPW.txt`, and `newUSER.txt` for more info.
+At the time of writing, I am not aware of how to automatically execute the above attack with Burp. So I created a quick python script to add `peter` to the password list after every 2 requests. I then created another list for usernames, so that it maps onto the password list -- See `4-script.py`, `newPW.txt`, and `newUSER.txt` for more info.
 
 I can then use the Burp Intruder pitchfork attack to insert the payloads of both lists in parallel to create a username + password combo
 
