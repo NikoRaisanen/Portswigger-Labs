@@ -3,7 +3,7 @@
 # This script generates those 2 files
 passwords = []
 newPW = []
-with open('passwords.txt', 'r') as fp:
+with open('../passwords.txt', 'r') as fp:
     passwords = fp.readlines()
 
 for i in range(len(passwords)):
