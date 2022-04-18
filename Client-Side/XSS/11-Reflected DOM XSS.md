@@ -12,7 +12,7 @@ I am capturing the requests and here is what I'm seeing:
 `GET /?search=test` => `GET /search-results?search=test`
 
 ### searchResults.js
-`eval()` is a known dangerous function in javascript, and we can see it be used on line 5 of searchrResults.js in this way `eval('var searchResultsObj = ' + this.responseText);`
+`eval()` is a known dangerous function in javascript, and we can see it be used on line 5 of searchResults.js in this way `eval('var searchResultsObj = ' + this.responseText);`
 
 We can also see that an XHR is used, so I went into the console and looked for xhr and found the following response for my search for "a":
 
